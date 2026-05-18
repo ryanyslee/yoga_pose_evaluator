@@ -51,19 +51,24 @@ This is solved using **Singular Value Decomposition (SVD)** on the covariance ma
 ## 🚀 How to Run (Quickstart)
 
 ### 1. Environment Setup
-Install the required dependencies and download the MediaPipe Tasks model:
+Install the required dependencies:
 ```bash
 pip install -r requirements.txt
-# Ensure pose_landmarker_heavy.task is placed in the models/ directory
 ```
 
-### 2. Generate Ground Truth Data
+### 2. Download the ML Model
+Run the setup script to fetch the MediaPipe Heavy Pose Landmarker model:
+```bash
+python download_model.py
+```
+
+### 3. Generate Ground Truth Data
 Compile the instructor images into reference matrices:
 ```bash
 python src/data_pipeline/yoga_groundtruth_v2.py
 ```
 
-### 3. Launch the Live Trainer
+### 4. Launch the Live Trainer
 Start the OpenCV webcam application (ensure your webcam is active):
 ```bash
 python src/app/live_validation_v2.py
@@ -76,7 +81,7 @@ python src/app/live_validation_v2.py
 ```text
 yoga_pose_evaluator/
 ├── models/
-│   └── pose_landmarker_heavy.task
+│   └── pose_landmarker_heavy.task <-- Fetched via download_model.py
 ├── data/
 │   ├── raw_images/
 │   └── GT_Data/ 
@@ -87,7 +92,3 @@ yoga_pose_evaluator/
 │   └── app/
 └── docs/
 ```
-
----
-### Acknowledgments
-*Developed as a capstone project for Numerical Methods.*
